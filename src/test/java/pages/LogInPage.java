@@ -27,17 +27,19 @@ public class LogInPage {
     }
 
     public ManagerHomePage logInValidData(String userID, String password) {
-        userIDInput.sendKeys(userID);
-        passwordInput.sendKeys(password);
-        loginButton.click();
+        logIn(userID, password);
         return new ManagerHomePage(driver);
     }
 
     public LogInPage logInInvalidData(String userID, String password) {
+        logIn(userID, password);
+        return this;
+    }
+
+    public void logIn(String userID, String password) {
         userIDInput.sendKeys(userID);
         passwordInput.sendKeys(password);
         loginButton.click();
-        return this;
     }
 
     public String getAlertText() {
