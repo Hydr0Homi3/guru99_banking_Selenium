@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LogInPage;
-import pages.ManagerHomePage;
 
 public class LogInTest extends BaseTest {
 
@@ -17,5 +16,13 @@ public class LogInTest extends BaseTest {
                 .getManagerLink();
 
         Assert.assertEquals(managerHomePage.getText(), "Manager");
+    }
+
+    @Test
+    public void logInInvalidDataTest() {
+        LogInPage logInPage = new LogInPage(driver)
+                .logInInvalidData("Kubala", "randomPassword");
+
+        Assert.assertEquals(logInPage.getAlertText(), "User or Password is not valid");
     }
 }

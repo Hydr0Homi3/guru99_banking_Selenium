@@ -1,5 +1,6 @@
 package tests;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -17,6 +18,8 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get("https://www.demo.guru99.com/V4/");
+        driver.switchTo().frame("gdpr-consent-notice");
+        driver.findElement(By.xpath("//*[@id='save']")).click();
     }
 
     @AfterMethod
