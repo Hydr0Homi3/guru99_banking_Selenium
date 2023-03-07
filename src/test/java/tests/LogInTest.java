@@ -16,6 +16,7 @@ public class LogInTest extends BaseTest {
                 .getHomePageTitle();
 
         Assert.assertEquals(managerHomePage.getText(), "Guru99 Bank");
+        Assert.assertEquals(driver.getTitle(), "Guru99 Bank Manager HomePage");
     }
 
     @Test
