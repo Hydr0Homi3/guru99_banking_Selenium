@@ -13,9 +13,9 @@ public class LogInTest extends BaseTest {
         Customer customer = new Customer();
         WebElement managerHomePage = new LogInPage(driver)
                 .logInValidData(customer.getUserID(), customer.getPassword())
-                .getManagerLink();
+                .getHomePageTitle();
 
-        Assert.assertEquals(managerHomePage.getText(), "Manager");
+        Assert.assertEquals(managerHomePage.getText(), "Guru99 Bank");
     }
 
     @Test
