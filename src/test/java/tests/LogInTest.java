@@ -1,14 +1,17 @@
 package tests;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import model.Customer;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 import org.openqa.selenium.WebElement;
 import pages.LogInPage;
 
 public class LogInTest extends BaseTest {
 
     @Test
+    @DisplayName("Log in with valid user id and valid password")
     public void logInValidDataTest() {
         Customer customer = new Customer();
         WebElement managerHomePage = new LogInPage(driver)
@@ -20,6 +23,7 @@ public class LogInTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Log in with invalid user id and valid password")
     public void logInInvalidUserIdValidPasswordTest() {
         LogInPage logInPage = new LogInPage(driver)
                 .logInInvalidData("Kubala", "guzedEt");
@@ -28,6 +32,7 @@ public class LogInTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Log in with valid user id and invalid password")
     public void logInValidUserIdInvalidPasswordTest() {
         LogInPage logInPage = new LogInPage(driver)
                 .logInInvalidData("mngr483341", "randompassword");
@@ -36,6 +41,7 @@ public class LogInTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Log in with invalid user id and invalid password")
     public void logInInvalidUserIdInvalidPasswordTest() {
         LogInPage logInPage = new LogInPage(driver)
                 .logInInvalidData("Kubala", "randompassword");
