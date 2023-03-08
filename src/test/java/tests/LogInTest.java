@@ -1,9 +1,9 @@
 package tests;
 
 import model.Customer;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 import pages.LogInPage;
 
 public class LogInTest extends BaseTest {
@@ -15,15 +15,31 @@ public class LogInTest extends BaseTest {
                 .logInValidData(customer.getUserID(), customer.getPassword())
                 .getHomePageTitle();
 
-        Assert.assertEquals(managerHomePage.getText(), "Guru99 Bank");
-        Assert.assertEquals(driver.getTitle(), "Guru99 Bank Manager HomePage");
+        assertEquals(managerHomePage.getText(), "Guru99 Bank");
+        assertEquals(driver.getTitle(), "Guru99 Bank Manager HomePage");
     }
 
     @Test
-    public void logInInvalidDataTest() {
+    public void logInInvalidUserIdValidPasswordTest() {
         LogInPage logInPage = new LogInPage(driver)
-                .logInInvalidData("Kubala", "randomPassword");
+                .logInInvalidData("Kubala", "guzedEt");
 
-        Assert.assertEquals(logInPage.getAlertText(), "User or Password is not valid");
+        assertEquals(logInPage.getAlertText(), "User or Password is not valid");
+    }
+
+    @Test
+    public void logInValidUserIdInvalidPasswordTest() {
+        LogInPage logInPage = new LogInPage(driver)
+                .logInInvalidData("mngr483341", "randompassword");
+
+        assertEquals(logInPage.getAlertText(), "User or Password is not valid");
+    }
+
+    @Test
+    public void logInInvalidUserIdInvalidPasswordTest() {
+        LogInPage logInPage = new LogInPage(driver)
+                .logInInvalidData("Kubala", "randompassword");
+
+        assertEquals(logInPage.getAlertText(), "User or Password is not valid");
     }
 }
