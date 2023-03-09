@@ -2,18 +2,16 @@ package tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import utils.DriverFactory;
-
 import java.time.Duration;
 
 public class BaseTest {
 
     protected WebDriver driver;
 
-    @BeforeEach
+    @BeforeMethod
     public void setup() {
         driver = DriverFactory.getDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -23,7 +21,7 @@ public class BaseTest {
         driver.findElement(By.xpath("//*[@id='save']")).click();
     }
 
-    @AfterEach
+    @AfterMethod
     public void tearDown() {
         driver.quit();
     }
