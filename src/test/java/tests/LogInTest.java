@@ -2,10 +2,10 @@ package tests;
 
 import model.Customer;
 import org.openqa.selenium.WebElement;
-import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 import pages.LogInPage;
 
+import static org.testng.Assert.assertEquals;
 
 
 public class LogInTest extends BaseTest {
@@ -15,10 +15,10 @@ public class LogInTest extends BaseTest {
         Customer customer = new Customer();
         WebElement managerHomePage = new LogInPage(driver)
                 .logInValidData(customer.getUserID(), customer.getPassword())
-                .getHomePageTitle();
+                .getMangerID();
 
-        assertEquals(managerHomePage.getText(), "Guru99 Bank");
-        assertEquals(driver.getTitle(), "Guru99 Bank Manager HomePage");
+        assertEquals("Guru99 Bank Manager HomePage", driver.getTitle());
+        assertEquals(managerHomePage.getText().replaceAll("Manger Id : ", ""), customer.getUserID());
     }
 
     @Test(testName = "Log in with invalid user id and valid password")

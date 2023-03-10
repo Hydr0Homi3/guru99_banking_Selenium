@@ -7,8 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ManagerHomePage {
 
-    @FindBy(xpath = "//h2[@class='barone']")
-    private WebElement homePageTitle;
+    @FindBy(xpath = ("/html/body/table/tbody/tr/td/table/tbody/tr[3]/td"))
+    private WebElement mangerID;
 
     private WebDriver driver;
 
@@ -17,8 +17,8 @@ public class ManagerHomePage {
         this.driver = driver;
     }
 
-    public WebElement getHomePageTitle() {
-        return homePageTitle;
+    public WebElement getMangerID() {
+        return mangerID;
     }
 }
 
