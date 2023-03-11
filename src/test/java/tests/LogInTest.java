@@ -4,14 +4,17 @@ import model.Customer;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import pages.LogInPage;
+import utils.Helper;
 
-import static org.testng.Assert.assertEquals;
+import java.io.IOException;
+
+import static org.testng.Assert.*;
 
 
 public class LogInTest extends BaseTest {
 
     @Test(testName = "Log in with valid user id and valid password")
-    public void logInValidDataTest() {
+    public void logInValidDataTest() throws IOException {
         Customer customer = new Customer();
         WebElement managerHomePage = new LogInPage(driver)
                 .logInValidData(customer.getUserID(), customer.getPassword())
@@ -19,6 +22,8 @@ public class LogInTest extends BaseTest {
 
         assertEquals("Guru99 Bank Manager HomePage", driver.getTitle());
         assertEquals(managerHomePage.getText().replaceAll("Manger Id : ", ""), customer.getUserID());
+        assertEquals("Manger Id : " + customer.getUserID(), managerHomePage.getText());
+        Helper.getScreenshot(driver);
     }
 
     @Test(testName = "Log in with invalid user id and valid password")
