@@ -35,10 +35,11 @@ public class LogInPage {
         return this;
     }
 
-    public void logIn(String userID, String password) {
+    public LogInPage logIn(String userID, String password) {
         userIDInput.sendKeys(userID);
         passwordInput.sendKeys(password);
         loginButton.click();
+        return this;
     }
 
     public String getAlertText() {
